@@ -1,0 +1,221 @@
+---
+title: brief tech note
+date: 2018-09-08T03:50:00.000Z
+---
+
+1. make about page
+    > https://www.gatsbyjs.org/tutorial/part-four/#our-first-graphql-query
+
+    * 주의 : Typography 는 IE11 에서 에러가 발생하여 skip 했음
+        > https://github.com/gatsbyjs/gatsby/issues/5553
+
+    ```jsx
+    // src/pages/about.js
+
+    import React from "react";
+
+    export default ({ data }) =>
+    <div>
+      <h1>
+        About {data.site.siteMetadata.title}
+      </h1>
+      <p>
+        We're the only site running on your computer dedicated to showing the best
+        photos and videos of pandas eating lots of food.
+      </p>
+    </div>
+
+    export const query = graphql`
+      query AboutQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+
+    ```
+
+2. title change
+    > https://www.gatsbyjs.org/tutorial/part-four/#querying-for-the-site-title
+
+    ```javascript
+    // gatsby-config.js
+
+    module.exports = {
+      siteMetadata: {
+        title: `funnystyle's Blog`,
+      },
+    }
+    ```
+
+3. filesystem
+    > https://www.gatsbyjs.org/tutorial/part-five/#source-plugins
+
+    ```shell
+    $ npm install --save gatsby-source-filesystem
+    ```
+
+    ```javascript
+    module.exports = {
+      plugins: [
+        {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+            name: `src`,
+            path: `${__dirname}/src/`,
+          },
+        },
+      ],
+    };
+    ```
+
+4. markdown
+
+    > https://www.gatsbyjs.org/tutorial/part-seven/
+
+    ```shell
+    $ npm install --save gatsby-transformer-remark
+    ```
+
+    ```javascript
+    // gatsby-config.js
+
+    module.exports = {
+      plugins: [
+        `gatsby-transformer-remark`,
+      ],
+    };
+    ```
+
+    ```jsx
+    // src/pages/index.js
+
+    import React from "react";
+    import Link from "gatsby-link";
+    
+    export default ({ data }) => {
+      return (
+        <div>
+          {/* <h1 style={{ display: "inline-block", borderBottom: "1px solid" }    }>
+            Amazing Pandas Eating Things
+          </h1> */}
+          <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+          {data.allMarkdownRemark.edges.map(({ node }) => (
+            <div key={node.id}>
+              <Link
+                to={node.fields.slug}
+                style={{ textDecoration: `none`, color: `inherit` }}
+              >
+                <h3 style={{ marginBottom: "2px" }}>
+                  {node.frontmatter.title}{" "}
+                  <span style={{ color: "#BBB" }}>— {node.frontmatter.date}    </span>
+                </h3>
+                <p>{node.excerpt}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+      );
+    };
+    
+    export const query = graphql`
+      query IndexQuery {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+          totalCount
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+                date(formatString: "DD MMMM, YYYY")
+              }
+              fields {
+                slug
+              }
+              excerpt
+            }
+          }
+        }
+      }
+    `;    
+    ```
+
+    ```jsx
+    // gatsby-node.js
+
+    const path = require(`path`);
+    const { createFilePath } = require(`gatsby-source-filesystem`);
+    
+    exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
+      const { createNodeField } = boundActionCreators
+      if (node.internal.type === `MarkdownRemark`) {
+        const slug = createFilePath({ node, getNode, basePath: `pages` })
+        createNodeField({
+          node,
+          name: `slug`,
+          value: slug,
+        })
+      }
+    };
+    
+    exports.createPages = ({ graphql, boundActionCreators }) => {
+      const { createPage } = boundActionCreators
+      return new Promise((resolve, reject) => {
+        graphql(`
+          {
+            allMarkdownRemark {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        `).then(result => {
+          result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+            createPage({
+              path: node.fields.slug,
+              component: path.resolve(`./src/templates/blog-post.js`),
+              context: {
+                // Data passed to context is available in page queries as     GraphQL variables.
+                slug: node.fields.slug,
+              },
+            })
+          })
+          resolve()
+        })
+      })
+    };   
+    ```
+
+    ```jsx
+    // src/templates/blog-post.js
+
+    import React from "react";
+    
+    export default ({ data }) => {
+      const post = data.markdownRemark;
+      return (
+        <div>
+          <h1>{post.frontmatter.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
+      );
+    };
+    
+    export const query = graphql`
+      query BlogPostQuery($slug: String!) {
+        markdownRemark(fields: { slug: { eq: $slug } }) {
+          html
+          frontmatter {
+            title
+          }
+        }
+      }
+    `
+    ```
+    

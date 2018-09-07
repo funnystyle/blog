@@ -26,6 +26,15 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <h2>
+        <Link style={{
+          float: `right`,
+          color: 'white',
+          textDecoration: 'none',
+        }} to={`/about/`}>
+          About
+        </Link>
+      </h2>
     </div>
   </div>
 )
