@@ -81,3 +81,6 @@
     ```
 
 12. netlify
+    > https://www.netlify.com/  
+    > github 계정으로 로그인 후  
+    > 해당 repository 만 deploy 설정하면 끝
