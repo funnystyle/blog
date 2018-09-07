@@ -1,0 +1,31 @@
+{
+  "name": "funnyblog",
+  "description": "funnystyle's develop books review blog",
+  "version": "1.0.0",
+  "author": "funnystyle <esero082@gmail.com>",
+  "dependencies": {
+    "gatsby": "^1.9.277",
+    "gatsby-link": "^1.6.46",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "react-helmet": "^5.2.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b master -r https://github.com/funnystyle/funnystyle.github.io"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.13.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/funnystyle/blog"
+  }
+}
