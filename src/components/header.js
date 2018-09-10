@@ -26,15 +26,22 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-      <h2>
+      <div style={{
+        float: `right`}}>
         <Link style={{
-          float: `right`,
+          color: 'white',
+          textDecoration: 'none',
+        }} to={`/technotes/`}>
+          tech-notes
+        </Link>
+        &nbsp;|&nbsp;
+        <Link style={{
           color: 'white',
           textDecoration: 'none',
         }} to={`/about/`}>
-          About
+          about
         </Link>
-      </h2>
+      </div>
     </div>
   </div>
 )
