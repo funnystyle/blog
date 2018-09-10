@@ -28,7 +28,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query TechnotesQuery {
-  allMarkdownRemark(filter: { frontmatter:  { category: { eq:"technotes"}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(filter: { frontmatter:  { category: { eq:"technotes"}}}, sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {

@@ -26,7 +26,6 @@ export default ({ data }) => {
           <div style={{ float: "left", overflow: "hidden", height: "100%", paddingRight: "10px" }}>
             {(() => {
               if (node.frontmatter.cover) {
-                console.log('###################', node.frontmatter.cover.childImageSharp.resolutions.src)
                 return <img src={node.frontmatter.cover.childImageSharp.resolutions.src} style={{ height: "100%", border: "1px solid #eee" }} />
               }
             })()}
