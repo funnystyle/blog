@@ -5,6 +5,9 @@ import Helmet from 'react-helmet'
 import Header from '../components/header'
 import './index.css'
 
+import 'prismjs/themes/prism-okaidia.css'
+import './gatsby-highlight-code-line.css'
+
 const Layout = ({ children, data }) => (
   <div>
     <Helmet

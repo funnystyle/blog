@@ -30,7 +30,7 @@ export default ({ data }) => {
               }
             })()}
           </div>
-          <p style={{ position: "relative", top: "50%", transform: "translateY(-50%)" }}>
+          <div style={{ position: "relative", top: "50%", transform: "translateY(-50%)" }}>
             <Link
               to={node.fields.slug}
               style={{ textDecoration: `none`, color: `inherit` }}
@@ -41,7 +41,7 @@ export default ({ data }) => {
               </h3>
               <span style={{ color: "#BBB" }}>— {node.frontmatter.date}</span>
             </Link>
-          </p>
+          </div>
         </div>
       ))}
     </div>
