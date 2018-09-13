@@ -23,7 +23,7 @@ module.exports = {
 };
 ```
 
-```javascript
+```jsx
 // src/pages/about.js
 
 export default ({ data }) =>
@@ -48,7 +48,7 @@ export const query = graphql`
 `
 ```
 
-```javascript
+```jsx
 // src/layouts/index.js
 
 import React from "react";
