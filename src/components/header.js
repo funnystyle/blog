@@ -31,10 +31,17 @@ const Header = ({ siteTitle }) => (
         <Link style={{
           color: 'white',
           textDecoration: 'none',
+        }} to={`/tags/`}>
+          tags
+        </Link>
+        <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span>
+        <Link style={{
+          color: 'white',
+          textDecoration: 'none',
         }} to={`/technotes/`}>
           tech-notes
         </Link>
-        &nbsp;|&nbsp;
+        <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span>
         <Link style={{
           color: 'white',
           textDecoration: 'none',

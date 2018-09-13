@@ -1,7 +1,10 @@
 ---
 title: Title
 category: technotes
-date: "2018-09-06T15:02:00.000Z"
+tags:
+    - gatsby
+    - title
+date: 2018-09-06T15:02:00.000Z
 ---
 
 [Gatsby](https://www.gatsbyjs.org/)는 [GraphQL](https://graphql.org/)을 이용해서 data 를 입력받는다.
