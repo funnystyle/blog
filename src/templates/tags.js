@@ -1,26 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import kebabCase from 'lodash/kebabCase'
 
 // Components
-import Link from "gatsby-link";
+import Link from 'gatsby-link'
 
 const Tags = ({ pathContext, data }) => {
-  const { tag } = pathContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `${totalCount} post${ totalCount === 1 ? "" : "s" } tagged with "${tag}"`;
+  const { tag } = pathContext
+  const { edges, totalCount } = data.allMarkdownRemark
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? '' : 's'
+    } tagged with "${kebabCase(tag)}"`
 
   return (
     <div>
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
-          const { title } = node.frontmatter;
-          const { slug } = node.fields;
-          return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
+          const { title } = node.frontmatter
+          const { slug } = node.fields
+          return <li key={slug}>
+              <Link to={slug}>{kebabCase(title)}</Link>
             </li>
-          );
         })}
       </ul>
       {/*
@@ -29,8 +31,8 @@ const Tags = ({ pathContext, data }) => {
       */}
       <Link to="/tags">All tags</Link>
     </div>
-  );
-};
+  )
+}
 
 Tags.propTypes = {
   pathContext: PropTypes.shape({
@@ -47,15 +49,15 @@ Tags.propTypes = {
             }),
             fields: PropTypes.shape({
               slug: PropTypes.string.isRequired,
-            })
+            }),
           }),
         }).isRequired
       ),
     }),
   }),
-};
+}
 
-export default Tags;
+export default Tags
 
 export const pageQuery = graphql`
   query TagPage($tag: String) {
@@ -77,4 +79,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

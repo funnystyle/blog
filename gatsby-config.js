@@ -13,15 +13,37 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          `Gamja Flower`,
-          `Yeon Sung`,
-          // `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
-        ],
+        custom: {
+          families: ['Jeongum', 'Godo', 'Hankc', 'Youth', 'BareunBatang'],
+          urls: ['/src/layouts/index.css'],
+        },
+        google: {
+          families: [
+            `Gamja Flower`,
+            `Yeon Sung`,
+            `Stylish`,
+            `Noto Serif KR`,
+            `Black And White Picture`,
+          ],
+        },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       `Gamja Flower`,
+    //       `Yeon Sung`,
+    //       `Stylish`,
+    //       `Noto Serif KR`,
+    //       `Black And White Picture`,
+
+    //       // `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

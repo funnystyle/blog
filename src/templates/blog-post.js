@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "gatsby-link";
 import Helmet from 'react-helmet'
+import kebabCase from 'lodash/kebabCase'
 
 export default ({ data, pathContext }) => {
   const post = data.markdownRemark;
-  const { prev, next, title, index } = pathContext;
-  console.log(prev, next, title,)
+  const { prev, next, title } = pathContext;
 
   return (<div>
     <Helmet title={`${post.frontmatter.title} - funnystyle}`} />
@@ -23,7 +23,7 @@ export default ({ data, pathContext }) => {
                 float: 'left',
               }}
             >
-              <Link to={`/tags/${tag}`}>{tag}</Link>
+              <Link to={`/tags/${kebabCase(tag)}`}>{kebabCase(tag)}</Link>
             </li>
           ))}
         </ul>
@@ -32,7 +32,7 @@ export default ({ data, pathContext }) => {
       <p>
         {prev && (
           <Link to={prev.fields.slug}>
-            Prev: {prev.frontmatter.title}
+            Prev: {kebabCase(prev.frontmatter.title)}
           </Link>
         )}
       </p>
@@ -40,7 +40,7 @@ export default ({ data, pathContext }) => {
       <p>
         {next && (
           <Link to={next.fields.slug}>
-            Next: {next.frontmatter.title}
+            Next: {kebabCase(next.frontmatter.title)}
           </Link>
         )}
       </p>

@@ -11,7 +11,7 @@ const Header = ({ siteTitle }) => (
     <div
       style={{
         margin: '0 auto',
-        maxWidth: 960,
+        maxWidth: 700,
         padding: '1.45rem 1.0875rem',
       }}
     >
@@ -35,13 +35,13 @@ const Header = ({ siteTitle }) => (
           tags
         </Link>
         <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span>
-        <Link style={{
+        {/* <Link style={{
           color: 'white',
           textDecoration: 'none',
         }} to={`/technotes/`}>
           tech-notes
         </Link>
-        <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span>
+        <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span> */}
         <Link style={{
           color: 'white',
           textDecoration: 'none',
