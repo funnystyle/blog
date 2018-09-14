@@ -16,18 +16,24 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ['Jeongum', 'Godo', 'Hankc', 'Youth', 'BareunBatang'],
-          urls: ['/src/layouts/index.css'],
-        },
-        google: {
           families: [
-            `Gamja Flower`,
-            `Yeon Sung`,
-            `Stylish`,
-            `Noto Serif KR`,
-            `Black And White Picture`,
+            // 'Jeongum',
+            // 'Godo',
+            // 'Hankc',
+            'Youth',
+            'BareunBatang'
           ],
+          // urls: ['/src/layouts/index.css'],
         },
+        // google: {
+        //   families: [
+        //     `Gamja Flower`,
+        //     `Yeon Sung`,
+        //     `Stylish`,
+        //     `Noto Serif KR`,
+        //     `Black And White Picture`,
+        //   ],
+        // },
       },
     },
     // {

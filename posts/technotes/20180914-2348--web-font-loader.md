@@ -46,7 +46,8 @@ date: 2018-09-14T23:48:00.000Z
           },
           custom: {
             families: ['Jeongum'],
-            urls: ['/src/layouts/index.css'],
+            // gatsby 는 css 를 html header 에 삽입하므로 아래 구문은 필요 없음
+            // urls: ['/src/layouts/index.css'],
           },
         },
       },
