@@ -7,6 +7,8 @@
     "gatsby": "^1.9.277",
     "gatsby-image": "^1.0.55",
     "gatsby-link": "^1.6.46",
+    "gatsby-plugin-google-fonts": "0.0.4",
+    "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-remark-copy-linked-files": "^1.5.37",
@@ -16,7 +18,8 @@
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.27",
     "prismjs": "^1.15.0",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "typography": "^0.16.17"
   },
   "keywords": [
     "gatsby"
