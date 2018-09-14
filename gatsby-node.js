@@ -35,6 +35,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           edges {
             node {
               frontmatter {
+                title
                 tags
               }
               fields {
@@ -46,31 +47,35 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
     `).then(result => {
       if (result.errors) {
-        return Promise.reject(result.errors);
+        return Promise.reject(result.errors)
       }
 
-      const posts = result.data.allMarkdownRemark.edges;
-      posts.forEach(({ node }) => {
+      const posts = result.data.allMarkdownRemark.edges
+      posts.forEach(({ node }, index) => {
+        console.log(index, node.frontmatter.title )
         createPage({
           path: node.fields.slug,
           component: blogPostTemplate,
           context: {
             // Data passed to context is available in page queries as GraphQL variables.
             slug: node.fields.slug,
+            prev: index === 0 ? null : posts[index - 1].node,
+            next: index === posts.length - 1 ? null : posts[index + 1].node,
+            index: index
           },
         })
       })
 
       // Tag pages:
-      let tags = [];
+      let tags = []
       // Iterate through each post, putting all found tags into `tags`
       _.each(posts, edge => {
-        if (_.get(edge, "node.frontmatter.tags")) {
-          tags = tags.concat(edge.node.frontmatter.tags);
+        if (_.get(edge, 'node.frontmatter.tags')) {
+          tags = tags.concat(edge.node.frontmatter.tags)
         }
-      });
+      })
       // Eliminate duplicate tags
-      tags = _.uniq(tags);
+      tags = _.uniq(tags)
 
       // Make tag pages
       tags.forEach(tag => {
@@ -80,8 +85,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           context: {
             tag,
           },
-        });
-      });
+        })
+      })
 
       resolve()
     })
