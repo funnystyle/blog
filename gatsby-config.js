@@ -12,30 +12,30 @@ module.exports = {
         lang: `ko`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        custom: {
-          families: [
-            // 'Jeongum',
-            // 'Godo',
-            // 'Hankc',
-            'Youth',
-            'BareunBatang'
-          ],
-          // urls: ['/src/layouts/index.css'],
-        },
-        // google: {
-        //   families: [
-        //     `Gamja Flower`,
-        //     `Yeon Sung`,
-        //     `Stylish`,
-        //     `Noto Serif KR`,
-        //     `Black And White Picture`,
-        //   ],
-        // },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-web-font-loader',
+    //   options: {
+    //     custom: {
+    //       families: [
+    //         // 'Jeongum',
+    //         // 'Godo',
+    //         // 'Hankc',
+    //         'Youth',
+    //         'BareunBatang'
+    //       ],
+    //       // urls: ['/src/layouts/index.css'],
+    //     },
+    //     // google: {
+    //     //   families: [
+    //     //     `Gamja Flower`,
+    //     //     `Yeon Sung`,
+    //     //     `Stylish`,
+    //     //     `Noto Serif KR`,
+    //     //     `Black And White Picture`,
+    //     //   ],
+    //     // },
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-google-fonts`,
     //   options: {
@@ -53,6 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        "excerpt_separator": `<!-- end -->`,
         plugins: [
           `gatsby-remark-copy-linked-files`,
           {
@@ -63,6 +64,13 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 680,
             },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: "nofollow"
+            }
           },
           {
             resolve: `gatsby-remark-prismjs`,

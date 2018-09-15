@@ -7,11 +7,16 @@ tags:
 date: 2018-09-06T15:02:00.000Z
 ---
 
-[Gatsby](https://www.gatsbyjs.org/)는 [GraphQL](https://graphql.org/)을 이용해서 data 를 입력받는다.
-
 `gatsby-config.js`파일의 siteMetadata 프로퍼티를 이용하여 여러가지 정보를 넣어놓을 수 있는데, 각 페이지에서 사용할 title 를 설정해 보자.
 
+<!-- end -->
 
+---
+
+[Gatsby](https://www.gatsbyjs.org/)는 [GraphQL](https://graphql.org/)을 이용해서 data 를 입력받는다.  
+`gatsby-config.js` 파일의 `siteMetadata` 에 설정하는 `property` 는 GraphQL 에서 검색이 가능하다.  
+
+따라서 아래와 같이 설정하면 된다.
 
 ```javascript
 // gatsby-config.js
