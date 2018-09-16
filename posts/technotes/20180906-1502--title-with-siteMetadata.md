@@ -14,7 +14,7 @@ date: 2018-09-06T15:02:00.000Z
 ---
 
 [Gatsby](https://www.gatsbyjs.org/)는 [GraphQL](https://graphql.org/)을 이용해서 data 를 입력받는다.  
-`gatsby-config.js` 파일의 `siteMetadata` 에 설정하는 `property` 는 GraphQL 에서 검색이 가능하다.  
+`gatsby-config.js` 파일의 `siteMetadata` 에 설정하는 `property` 는 GraphQL 에서 검색이 가능하다.
 
 따라서 아래와 같이 설정하면 된다.
 
@@ -25,22 +25,21 @@ module.exports = {
   siteMetadata: {
     title: `funnyshelf`,
   },
-};
+}
 ```
 
 ```jsx
 // src/pages/about.js
 
-export default ({ data }) =>
+export default ({ data }) => (
   <div>
-    <h1>
-      About {data.site.siteMetadata.title}
-    </h1>
+    <h1>About {data.site.siteMetadata.title}</h1>
     <p>
       We're the only site running on your computer dedicated to showing the best
       photos and videos of pandas eating lots of food.
     </p>
   </div>
+)
 
 export const query = graphql`
   query AboutQuery {
@@ -56,16 +55,16 @@ export const query = graphql`
 ```jsx
 // src/layouts/index.js
 
-import React from "react";
-import g from "glamorous";
-import { css } from "glamor";
-import Link from "gatsby-link";
+import React from 'react'
+import g from 'glamorous'
+import { css } from 'glamor'
+import Link from 'gatsby-link'
 
-import { rhythm } from "../utils/typography";
+import { rhythm } from '../utils/typography'
 
 const linkStyle = css({ float: `right` })
 
-export default ({ children, data }) =>
+export default ({ children, data }) => (
   <g.Div
     margin={`0 auto`}
     maxWidth={700}
@@ -82,6 +81,7 @@ export default ({ children, data }) =>
     </Link>
     {children()}
   </g.Div>
+)
 
 export const query = graphql`
   query LayoutQuery {

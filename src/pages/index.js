@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "gatsby-link";
+import React from 'react'
+import Link from 'gatsby-link'
 
 export default ({ data }) => {
   return (
@@ -14,21 +14,24 @@ export default ({ data }) => {
             to={node.fields.slug}
             style={{ textDecoration: `none`, color: `inherit` }}
           >
-            <h3 style={{ marginBottom: "2px" }}>
-              {node.frontmatter.title}{" "}
-              <span style={{ color: "#BBB" }}>— {node.frontmatter.date}</span>
+            <h3 style={{ marginBottom: '2px' }}>
+              {node.frontmatter.title}{' '}
+              <span style={{ color: '#BBB' }}>— {node.frontmatter.date}</span>
             </h3>
             <p>{node.excerpt}</p>
           </Link>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query TechnotesQuery {
-    allMarkdownRemark(filter: { frontmatter:  { category: { eq:"technotes"}}}, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "technotes" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       totalCount
       edges {
         node {
@@ -45,4 +48,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

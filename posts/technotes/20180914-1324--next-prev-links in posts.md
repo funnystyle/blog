@@ -7,16 +7,14 @@ tags:
 date: 2018-09-14T13:24:00.000Z
 ---
 
-1. 참고자료
+1.  참고자료
 
-    > https://egghead.io/lessons/gatsby-include-links-to-next-and-previous-gatsby-blog-posts  
+    > https://egghead.io/lessons/gatsby-include-links-to-next-and-previous-gatsby-blog-posts
 
+2.  gatsby-node.js 수정
 
+    - graphql 쿼리 추가 : prev, next 링크에 쓸 title 을 추가
 
-2. gatsby-node.js 수정
-
-    * graphql 쿼리 추가 : prev, next 링크에 쓸 title 을 추가
-    
     ```jsx{6}
     {
       allMarkdownRemark {
@@ -35,8 +33,8 @@ date: 2018-09-14T13:24:00.000Z
     }
     ```
 
-    * context 추가 : index 를 이용하여 prev, next 를 context 에 전달한다.
-    
+    - context 추가 : index 를 이용하여 prev, next 를 context 에 전달한다.
+
     ```jsx{1,7-8}
     posts.forEach(({ node }, index) => {
       createPage({
@@ -51,18 +49,18 @@ date: 2018-09-14T13:24:00.000Z
     })
     ```
 
-3. blog-post.js 수정
+3.  blog-post.js 수정
 
-    * 인자 준비    
-    
+    - 인자 준비
+
     ```jsx{1,3}
     export default ({ data, location, pathContext }) => {
       const post = data.markdownRemark;
       const { prev, next, title } = pathContext;
     ```
 
-    * prev, next 링크 생성
-    
+    - prev, next 링크 생성
+
     ```jsx{2-19}
     <div style={{ marginTop: '30px' }} dangerouslySetInnerHTML={{ __html: post.html }} />
     <p>
@@ -79,4 +77,4 @@ date: 2018-09-14T13:24:00.000Z
         </Link>
       )}
     </p>
-    ```    
+    ```

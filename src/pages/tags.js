@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // Utilities
-import kebabCase from "lodash/kebabCase";
+import kebabCase from 'lodash/kebabCase'
 
 // Components
-import Helmet from "react-helmet";
-import Link from "gatsby-link";
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 
 const TagsPage = ({
   data: {
@@ -16,22 +16,22 @@ const TagsPage = ({
     },
   },
 }) => (
+  <div>
+    <Helmet title={title} />
     <div>
-      <Helmet title={title} />
-      <div>
-        <h1>Tags</h1>
-        <ul>
-          {group.map(tag => (
-            <li key={tag.fieldValue}>
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {kebabCase(tag.fieldValue)} ({tag.totalCount})
+      <h1>Tags</h1>
+      <ul>
+        {group.map(tag => (
+          <li key={tag.fieldValue}>
+            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              {kebabCase(tag.fieldValue)} ({tag.totalCount})
             </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+          </li>
+        ))}
+      </ul>
     </div>
-  );
+  </div>
+)
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
@@ -49,9 +49,9 @@ TagsPage.propTypes = {
       }),
     }),
   }),
-};
+}
 
-export default TagsPage;
+export default TagsPage
 
 export const pageQuery = graphql`
   query TagsQuery {
@@ -60,15 +60,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
-      limit: 2000
-    ) {
+    allMarkdownRemark(limit: 2000) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }
     }
   }
-`;
+`
 
 // filter: { frontmatter: { published: { ne: false } } }

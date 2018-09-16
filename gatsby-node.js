@@ -6,9 +6,9 @@
 
 // You can delete this file if you're not using it
 
-const path = require(`path`);
-const _ = require(`lodash`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`)
+const _ = require(`lodash`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
@@ -20,18 +20,18 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       value: slug,
     })
   }
-};
+}
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
-  const blogPostTemplate = path.resolve("src/templates/blog-post.js");
-  const tagTemplate = path.resolve("src/templates/tags.js");
+  const blogPostTemplate = path.resolve('src/templates/blog-post.js')
+  const tagTemplate = path.resolve('src/templates/tags.js')
 
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark (sort: { fields: [frontmatter___date], order: DESC }) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               frontmatter {
@@ -90,4 +90,4 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       resolve()
     })
   })
-};
+}

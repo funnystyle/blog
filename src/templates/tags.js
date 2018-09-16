@@ -11,7 +11,7 @@ const Tags = ({ pathContext, data }) => {
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-    } tagged with "${kebabCase(tag)}"`
+  } tagged with "${kebabCase(tag)}"`
 
   return (
     <div>
@@ -20,9 +20,11 @@ const Tags = ({ pathContext, data }) => {
         {edges.map(({ node }) => {
           const { title } = node.frontmatter
           const { slug } = node.fields
-          return <li key={slug}>
+          return (
+            <li key={slug}>
               <Link to={slug}>{kebabCase(title)}</Link>
             </li>
+          )
         })}
       </ul>
       {/*

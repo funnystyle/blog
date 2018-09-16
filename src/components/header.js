@@ -26,12 +26,18 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-      <div style={{
-        float: `right`}}>
-        <Link style={{
-          color: 'white',
-          textDecoration: 'none',
-        }} to={`/tags/`}>
+      <div
+        style={{
+          float: `right`,
+        }}
+      >
+        <Link
+          style={{
+            color: 'white',
+            textDecoration: 'none',
+          }}
+          to={`/tags/`}
+        >
           tags
         </Link>
         <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span>
@@ -42,10 +48,13 @@ const Header = ({ siteTitle }) => (
           tech-notes
         </Link>
         <span style={{ color: '#777' }}>&nbsp;|&nbsp;</span> */}
-        <Link style={{
-          color: 'white',
-          textDecoration: 'none',
-        }} to={`/about/`}>
+        <Link
+          style={{
+            color: 'white',
+            textDecoration: 'none',
+          }}
+          to={`/about/`}
+        >
           about
         </Link>
       </div>

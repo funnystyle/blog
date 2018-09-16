@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        "excerpt_separator": `<!-- end -->`,
+        excerpt_separator: `<!-- end -->`,
         plugins: [
           `gatsby-remark-copy-linked-files`,
           {
@@ -69,8 +69,18 @@ module.exports = {
             resolve: `gatsby-remark-external-links`,
             options: {
               target: `_blank`,
-              rel: "nofollow"
-            }
+              rel: 'nofollow',
+            },
+          },
+          {
+            resolve: `gatsby-remark-prettier`,
+            options: {
+              // Look for local .prettierrc file.
+              // The same as `prettier.resolveConfig(process.cwd())`
+              usePrettierrc: true,
+              // Overwrite prettier options, check out https://prettier.io/docs/en/options.html
+              prettierOptions: {}
+            },
           },
           {
             resolve: `gatsby-remark-prismjs`,

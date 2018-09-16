@@ -15,20 +15,21 @@ date: 2018-09-16T00:09:00.000Z
 
 ---
 
-1. 참고자료
+1.  참고자료
+
     > https://www.gatsbyjs.org/packages/gatsby-remark-external-links
     > https://github.com/remarkjs/remark-external-links
 
-2. plugin 설치
+2.  plugin 설치
 
     ```shell
     npm install --save gatsby-remark-external-links
     ```
 
-3. gatsby-config.js 수정
+3.  gatsby-config.js 수정
 
     ```javascript{6-12}
-    plugins: [      
+    plugins: [
       {
         resolve: `gatsby-transformer-remark`,
         options: {
@@ -46,4 +47,4 @@ date: 2018-09-16T00:09:00.000Z
     ]
     ```
 
-4. 재시작
+4.  재시작
